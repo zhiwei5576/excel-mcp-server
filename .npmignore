@@ -1,0 +1,24 @@
+# 源代码
+src/
+tests/
+examples/
+
+# 开发配置文件
+.github/
+.vscode/
+.idea/
+.history/
+*.log
+logs/
+tsconfig.json
+.gitignore
+.gitattributes
+
+# 开发依赖
+node_modules/
+
+# 其他文件
+.DS_Store
+*.tgz
+.env
+.env.*

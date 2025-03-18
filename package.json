@@ -1,8 +1,12 @@
 {
-  "name": "excel-mcp-server",
-  "version": "1.0.0",
+  "name": "@zhiweixu/excel-mcp-server",
+  "version": "0.0.1",
   "type": "module",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhiwei5576/excel-mcp-server.git"
+  },
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
@@ -10,9 +14,9 @@
     "watch": "tsc -w"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "zhiweixu",
+  "license": "MIT",
+  "description": "Excel file processing server based on Model Context Protocol (MCP)",
   "devDependencies": {
     "@types/node": "^22.13.10",
     "nodemon": "^3.1.9",
@@ -22,5 +26,9 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
     "xlsx": "^0.18.5"
+  },
+  "volta": {
+    "node": "18.20.6",
+    "npm": "10.8.2"
   }
 }
