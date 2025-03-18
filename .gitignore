@@ -1,0 +1,6 @@
+# 开发环境目录
+.history/
+dist/
+
+# 依赖目录
+node_modules/
