@@ -1,0 +1,38 @@
+# 开发环境
+.git
+.gitignore
+.history
+.vscode
+.idea
+*.swp
+.DS_Store
+
+# 依赖目录
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# 环境配置
+.env
+.env.*
+*.local
+
+# 日志文件
+logs
+*.log
+
+# 构建输出
+dist
+build
+coverage
+
+# 文档
+docs
+*.md
+!README.md
+
+# 测试文件
+__tests__
+test
+tests
