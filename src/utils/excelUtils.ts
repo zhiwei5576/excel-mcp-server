@@ -5,7 +5,6 @@ import { workbookCache } from './workbookCache.js'
 import { logToFile } from './utils.js';
 import type { ReadSheetNamesResult } from '../types/index.js';
 
-// Increase the timeout duration (5 minutes)
 const READ_TIMEOUT = 300000;
 export async function readAndCacheFile(filePathWithName: string): Promise<ReadSheetNamesResult> {
     try {

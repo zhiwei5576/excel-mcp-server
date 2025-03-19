@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { fileExists, normalizePath } from "../utils/utils.js";
 import { analyzeExcelStructure, exportExcelStructure } from '../handlers/excelHandlers.js';
-export const analyzeTools = (server) => {
-    server.tool("analyzeExcelStructure", 'Get Excel structure as JSON format including sheet list and headers', {
+export const structureTools = (server) => {
+    server.tool("analyzeExcelStructure", 'Get Excel file structure including sheet list and column headers in JSON format', {
         fileAbsolutePath: z.string().describe("The absolute path of the Excel file"),
         headerRows: z.number().default(1).describe("Number of header rows to read (default: 1)")
     }, async (params) => {
@@ -50,7 +50,7 @@ export const analyzeTools = (server) => {
             };
         }
     });
-    server.tool("exportExcelStructure", 'Export Excel structure to a new Excel file', {
+    server.tool("exportExcelStructure", 'Export Excel file structure (sheets and headers) to a new Excel template file', {
         sourceFilePath: z.string().describe("The source Excel file path to analyze"),
         targetFilePath: z.string().describe("The target Excel file path to save structure"),
         headerRows: z.number().default(1).describe("Number of header rows to analyze (default: 1)")

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { fileExists, normalizePath } from "../utils/utils.js";
 import { writeDataBySheetName, writeSheetData } from '../handlers/excelHandlers.js';
 export const writeTools = (server) => {
-    server.tool("writeDataBySheetName", 'Write data to a specific sheet in an Excel file,If the sheet already exists, it will be overwritten', {
+    server.tool("writeDataBySheetName", 'Write data to a specific sheet in the Excel file (overwrites if sheet exists)', {
         fileAbsolutePath: z.string().describe("The absolute path of the Excel file"),
         sheetName: z.string().describe("The name of the sheet to write"),
         data: z.array(z.record(z.string(), z.any())).describe("Array of objects to write to the sheet")
@@ -67,7 +67,7 @@ export const writeTools = (server) => {
             };
         }
     });
-    server.tool("writeSheetData", 'Write data to a new Excel file', {
+    server.tool("writeSheetData", 'Create a new Excel file with provided data', {
         fileAbsolutePath: z.string().describe("The absolute path for the new Excel file"),
         data: z.record(z.string(), // 表名（动态）
         z.array(// 表数据数组

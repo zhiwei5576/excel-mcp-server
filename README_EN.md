@@ -61,17 +61,30 @@ npm run watch
 
 ## API Tools
 
+### Structure Tools
+
+1. analyzeExcelStructure
+   - Function: Get Excel file structure including sheet list and column headers in JSON format
+   - Parameters:
+     - fileAbsolutePath: Absolute path of the Excel file
+     - headerRows: Number of header rows (default: 1)
+
+2. exportExcelStructure
+   - Function: Export Excel file structure (sheets and headers) to a new Excel template file
+   - Parameters:
+     - sourceFilePath: Source Excel file path
+     - targetFilePath: Target Excel file path
+     - headerRows: Number of header rows (default: 1)
+
 ### Read Tools
 
 1. readSheetNames
-
-   - Function: Get all sheet names from Excel file
+   - Function: Get all sheet names from the Excel file
    - Parameters:
      - fileAbsolutePath: Absolute path of the Excel file
 
 2. readDataBySheetName
-
-   - Function: Read data from specific sheet
+   - Function: Get data from a specific sheet in the Excel file
    - Parameters:
      - fileAbsolutePath: Absolute path of the Excel file
      - sheetName: Name of the sheet to read
@@ -79,8 +92,7 @@ npm run watch
      - dataStartRow: Data start row number (default: 2)
 
 3. readSheetData
-
-   - Function: Read data from all sheets
+   - Function: Get data from all sheets in the Excel file
    - Parameters:
      - fileAbsolutePath: Absolute path of the Excel file
      - headerRow: Header row number (default: 1)
@@ -89,41 +101,22 @@ npm run watch
 ### Write Tools
 
 1. writeDataBySheetName
-
-   - Function: Write data to specific sheet
+   - Function: Write data to a specific sheet in the Excel file (overwrites if sheet exists)
    - Parameters:
      - fileAbsolutePath: Absolute path of the Excel file
      - sheetName: Name of the sheet to write
      - data: Array of data to write
 
 2. writeSheetData
-
-   - Function: Write data to new Excel file
+   - Function: Create a new Excel file with provided data
    - Parameters:
      - fileAbsolutePath: Absolute path for the new Excel file
      - data: Object containing multiple sheet data
 
-### Analysis Tools
-
-1. analyzeExcelStructure
-
-   - Function: Analyze Excel file structure
-   - Parameters:
-     - fileAbsolutePath: Absolute path of the Excel file
-     - headerRows: Number of header rows (default: 1)
-
-2. exportExcelStructure
-
-   - Function: Export Excel structure to new file
-   - Parameters:
-     - sourceFilePath: Source Excel file path
-     - targetFilePath: Target Excel file path
-     - headerRows: Number of header rows (default: 1)
-
-### Common Tools
+### Cache Tools
 
 1. clearFileCache
-   - Function: Clear cache for specific Excel file
+   - Function: Clear cached data for the specified Excel file
    - Parameters:
      - fileAbsolutePath: Absolute path of the Excel file to clear from cache
 
@@ -162,4 +155,4 @@ This project is licensed under the MIT License. This means you are free to:
 
 - Retain the original copyright notice
 - No liability can be claimed against the authors for software use
-  For detailed license information, please see the LICENSE file.
+  For detailed license information,please see the [LICENSE](./LICENSE) file.

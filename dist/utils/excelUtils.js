@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as XLSX from 'xlsx';
 import { workbookCache } from './workbookCache.js';
 import { logToFile } from './utils.js';
-// Increase the timeout duration (5 minutes)
 const READ_TIMEOUT = 300000;
 export async function readAndCacheFile(filePathWithName) {
     try {

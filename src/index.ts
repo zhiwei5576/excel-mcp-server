@@ -1,12 +1,13 @@
-import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { analyzeTools } from "./tools/analyzeTools.js";
+import packageJson from '../package.json' with { type: "json" };
+import { structureTools } from "./tools/structureTools.js";
 import { writeTools } from "./tools/writeTools.js";
 import { readTools } from "./tools/readTools.js";
-import { commTools } from "./tools/commTools.js";
-import { LogCleaner } from "./utils/logCleaner.js";
+import { cacheTools } from "./tools/cacheTools.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { initializeLogger } from "./handlers/logHandlers.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,19 +15,17 @@ const __dirname = path.dirname(__filename);
 // Create an MCP server
 const server = new McpServer({
   name: "excel-mcp-server",
-  version: "0.0.1"
+  version: packageJson.version
 });
 
-// 初始化日志清理器
-const logDir = path.join(__dirname, '../logs');
-const logCleaner = new LogCleaner(logDir, 7); // 保留7天的日志
-logCleaner.start(24); // 每24小时清理一次
+// 初始化日志清理器，直接使用 __dirname（dist 目录）
+initializeLogger(__dirname);
 
 // 注册工具
-analyzeTools(server);
+structureTools(server);
 readTools(server);
 writeTools(server);
-commTools(server);
+cacheTools(server);   
 
 
 // Start receiving messages on stdin and sending messages on stdout

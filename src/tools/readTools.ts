@@ -3,7 +3,7 @@ import { fileExists, normalizePath } from "../utils/utils.js";
 import { readAllSheetData, readDataBySheetName, readSheetNames } from '../handlers/excelHandlers.js'
 
 export const readTools = (server: any) => {
-    server.tool("readSheetNames", 'List all sheets names in the Excel file',
+    server.tool("readSheetNames", 'Get all sheet names from the Excel file',
         {
             fileAbsolutePath: z.string().describe("The absolute path of the Excel file")
         },
@@ -126,7 +126,7 @@ export const readTools = (server: any) => {
 
         }
     );
-    server.tool("readSheetData", 'Read data from all sheets in the Excel file',
+    server.tool("readSheetData", 'Get data from all sheets in the Excel file',
         {
             fileAbsolutePath: z.string().describe("The absolute path of the Excel file"),
             headerRow: z.number().default(1).describe("The row number to use as field names (default: 1)"),

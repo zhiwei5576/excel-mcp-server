@@ -24,7 +24,7 @@ export async function logToFile(message: string) {
         const date = new Date();
         const fileName = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}.log`;
         const logPath = path.join(logDir, fileName);
-        
+
         await fs.mkdir(logDir, { recursive: true });
         await fs.appendFile(logPath, `${formatDate(date)} - ${message}\n`);
     } catch (error) {
