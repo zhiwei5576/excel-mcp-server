@@ -27,6 +27,9 @@
     "@modelcontextprotocol/sdk": "^1.7.0",
     "xlsx": "^0.18.5"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "volta": {
     "node": "18.20.6",
     "npm": "10.8.2"
