@@ -26,6 +26,6 @@ jobs:
           files: dist/**/*.js
           draft: true        # 设置为草稿模式
           prerelease: true   # 标记为预发布
-          tag_name: test-v0.0.1  # 指定测试用的标签名
+          tag_name: v0.0.3  # 指定测试用的标签名
         env:
           token: ${{ secrets.EXCEL_TOKEN }}
