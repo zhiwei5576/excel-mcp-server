@@ -13,8 +13,14 @@ export function getLogPath() {
     let logPath;
     if (config.logPath) {
         try {
-            fs.accessSync(config.logPath);
-            logPath = config.logPath;
+            //在指定目录下创建子目录excel-mcp-server-logs
+            const subDir = 'excel-mcp-server-logs';
+            const subDirPath = path.join(config.logPath, subDir);
+            if (!fs.existsSync(subDirPath)) {
+                fs.mkdirSync(subDirPath, { recursive: true });
+            }
+            fs.accessSync(subDirPath);
+            logPath = subDirPath;
         }
         catch (error) {
             console.log(`LOG_PATH environment variable specifies an invalid or inaccessible path: ${config.logPath}, using default path instead.`);

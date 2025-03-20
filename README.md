@@ -1,138 +1,168 @@
 # Excel MCP Server
 [![npm](https://img.shields.io/npm/v/@zhiweixu/excel-mcp-server)](https://www.npmjs.com/package/@zhiweixu/excel-mcp-server)
-[English](./readme_en.md) | 简体中文
+[简体中文](./README_CN.md) | English
 
-基于模型上下文协议（MCP）的 Excel 文件处理服务器，提供 Excel 文件的读写、分析等功能。
+Excel file processing server based on Model Context Protocol (MCP), providing functionalities for reading, writing, and analyzing Excel files.
 
-## 功能特点
+## Features
 
-- 📖 读取 Excel 文件
-  - 获取工作表列表
-  - 读取指定工作表数据
-  - 读取所有工作表数据
+- 📖 Read Excel Files
 
-- ✍️ 写入 Excel 文件
-  - 创建新的 Excel 文件
-  - 写入指定工作表
-  - 支持多工作表操作
+  - Get worksheet list
+  - Read specific worksheet data
+  - Read all worksheets data
 
-- 🔍 分析 Excel 结构
-  - 分析工作表结构
-  - 导出结构到新文件
+- ✍️ Write Excel Files
 
-- 💾 缓存管理
-  - 自动文件内容缓存
-  - 定时缓存清理
-  - 手动缓存清除
+  - Create new Excel files
+  - Write to specific worksheet
+  - Support multiple worksheets
 
-- 📝 日志管理
-  - 自动操作日志记录
-  - 定期日志清理
+- 🔍 Analyze Excel Structure
 
-## 安装
+  - Analyze worksheet structure
+  - Export structure to new file
+
+- 💾 Cache Management
+
+  - Automatic file content caching
+  - Scheduled cache cleanup
+  - Manual cache clearing
+
+- 📝 Log Management
+  - Automatic operation logging
+  - Periodic log cleanup
+
+## Installation
+
+Installing via NPM
+excel-mcp-server can be automatically installed by adding the following configuration to the MCP servers configuration.
+
+Windows Platform:
 
 ```bash
-# 安装依赖
-npm install
-
-# 构建项目
-npm run build
+{
+  "mcpServers": {
+    "excel": {
+        "command": "cmd",
+        "args": ["/c", "npx", "--yes", "@zhiweixu/excel-mcp-server"],
+        "env": {
+            "LOG_PATH": "[set an accessible absolute path]"
+        }
+    }
+}
 ```
-### 启动服务器
-```bash
-npm start
- ```
 
-### 开发模式
-```bash
-npm run dev
- ```
+Other Platforms:
 
-### 监视模式构建
 ```bash
-npm run watch
- ```
+{
+  "mcpServers": {
+    "excel": {
+        "command": "npx",
+        "args": ["--yes", "@zhiweixu/excel-mcp-server"],
+        "env": {
+            "LOG_PATH": "[set an accessible absolute path]"
+        }
+    }
+}
+```
+Note: LOG_PATH is optional. If not set, logs will be stored in the 'logs' folder under the application root directory.
 
-## API 工具
-### 结构分析
-- analyzeExcelStructure
-  
-  - 功能：获取 Excel 文件结构，包含工作表列表和列标题，以 JSON 格式返回
-  - 参数：
-    - fileAbsolutePath: Excel 文件的绝对路径
-    - headerRows: 标题行数（默认：1）
-- exportExcelStructure
-  
-  - 功能：将 Excel 文件结构（工作表和标题）导出为新的 Excel 模板文件
-  - 参数：
-    - sourceFilePath: 源 Excel 文件路径
-    - targetFilePath: 目标 Excel 文件路径
-    - headerRows: 标题行数（默认：1）
-### 读取操作
-- readSheetNames
-  
-  - 功能：获取 Excel 文件中的所有工作表名称
-  - 参数：
-    - fileAbsolutePath: Excel 文件的绝对路径
-- readDataBySheetName
-  
-  - 功能：获取 Excel 文件中指定工作表的数据
-  - 参数：
-    - fileAbsolutePath: Excel 文件的绝对路径
-    - sheetName: 要读取的工作表名称
-    - headerRow: 标题行号（默认：1）
-    - dataStartRow: 数据起始行号（默认：2）
-- readSheetData
-  
-  - 功能：获取 Excel 文件中所有工作表的数据
-  - 参数：
-    - fileAbsolutePath: Excel 文件的绝对路径
-    - headerRow: 标题行号（默认：1）
-    - dataStartRow: 数据起始行号（默认：2）
-### 写入操作
-- writeDataBySheetName
-  
-  - 功能：将数据写入 Excel 文件的指定工作表（如果工作表已存在则覆盖）
-  - 参数：
-    - fileAbsolutePath: Excel 文件的绝对路径
-    - sheetName: 要写入的工作表名称
-    - data: 要写入的数据数组
-- writeSheetData
-  
-  - 功能：使用提供的数据创建新的 Excel 文件
-  - 参数：
-    - fileAbsolutePath: 新 Excel 文件的绝对路径
-    - data: 包含多个工作表数据的对象
-### 缓存管理
-- clearFileCache
-  - 功能：清除指定 Excel 文件的缓存数据
-  - 参数：
-    - fileAbsolutePath: 要清除缓存的 Excel 文件绝对路径
-## 配置说明
-- 缓存配置
-  
-  - 缓存过期时间：1 小时
-  - 缓存清理间隔：4 小时
-- 日志配置
-  
-  - 日志保留天数：7 天
-  - 清理间隔：24 小时
-## 依赖项
+## API Tools
+
+### Structure Tools
+
+1. analyzeExcelStructure
+   - Function: Get Excel file structure including sheet list and column headers in JSON format
+   - Parameters:
+     - fileAbsolutePath: Absolute path of the Excel file
+     - headerRows: Number of header rows (default: 1)
+
+2. exportExcelStructure
+   - Function: Export Excel file structure (sheets and headers) to a new Excel template file
+   - Parameters:
+     - sourceFilePath: Source Excel file path
+     - targetFilePath: Target Excel file path
+     - headerRows: Number of header rows (default: 1)
+
+### Read Tools
+
+1. readSheetNames
+   - Function: Get all sheet names from the Excel file
+   - Parameters:
+     - fileAbsolutePath: Absolute path of the Excel file
+
+2. readDataBySheetName
+   - Function: Get data from a specific sheet in the Excel file
+   - Parameters:
+     - fileAbsolutePath: Absolute path of the Excel file
+     - sheetName: Name of the sheet to read
+     - headerRow: Header row number (default: 1)
+     - dataStartRow: Data start row number (default: 2)
+
+3. readSheetData
+   - Function: Get data from all sheets in the Excel file
+   - Parameters:
+     - fileAbsolutePath: Absolute path of the Excel file
+     - headerRow: Header row number (default: 1)
+     - dataStartRow: Data start row number (default: 2)
+
+### Write Tools
+
+1. writeDataBySheetName
+   - Function: Write data to a specific sheet in the Excel file (overwrites if sheet exists)
+   - Parameters:
+     - fileAbsolutePath: Absolute path of the Excel file
+     - sheetName: Name of the sheet to write
+     - data: Array of data to write
+
+2. writeSheetData
+   - Function: Create a new Excel file with provided data
+   - Parameters:
+     - fileAbsolutePath: Absolute path for the new Excel file
+     - data: Object containing multiple sheet data
+
+### Cache Tools
+
+1. clearFileCache
+   - Function: Clear cached data for the specified Excel file
+   - Parameters:
+     - fileAbsolutePath: Absolute path of the Excel file to clear from cache
+
+## Configuration
+
+- Cache Configuration
+
+  - Cache expiration time: 1 hour
+  - Cache cleanup interval: 4 hours
+
+- Log Configuration
+
+  - Log retention days: 7 days
+  - Cleanup interval: 24 hours
+
+## Dependencies
+
 - @modelcontextprotocol/sdk: ^1.7.0
 - xlsx: ^0.18.5
 - typescript: ^5.8.2
-## 开发依赖
+
+## Development Dependencies
+
 - @types/node: ^22.13.10
 - nodemon: ^3.1.9
 - ts-node: ^10.9.2
-## 许可证
-本项目采用 MIT 许可证。这意味着您可以：
 
-- 将软件用于商业或非商业用途
-- 修改源代码
-- 分发原始或修改后的代码
-要求：
+## License
 
-- 保留原始版权声明
-- 对软件使用不承担任何责任
-详细许可信息请查看 [LICENSE](./LICENSE) 文件。
+This project is licensed under the MIT License. This means you are free to:
+
+- Use the software for commercial or non-commercial purposes
+- Modify the source code
+- Distribute original or modified code
+  Requirements:
+
+- Retain the original copyright notice
+- No liability can be claimed against the authors for software use
+  For detailed license information,please see the [LICENSE](./LICENSE) file.
