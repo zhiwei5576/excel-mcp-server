@@ -1,11 +1,13 @@
 name: Test Release
 
 on:
-  workflow_dispatch:  # 仅支持手动触发
+  workflow_dispatch:
 
 jobs:
   test-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write      # 明确声明需要的权限
     steps:
       - uses: actions/checkout@v3
       
@@ -26,8 +28,8 @@ jobs:
           files: |
             dist/*.js
             dist/**/*.js
-          draft: true        # 设置为草稿模式
-          prerelease: true   # 标记为预发布
-          tag_name: v0.0.3  # 指定测试用的标签名
+          draft: true
+          prerelease: true
+          tag_name: v0.0.3
         env:
-          token: ${{ secrets.EXCEL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
