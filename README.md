@@ -1,5 +1,6 @@
 # Excel MCP Server
 [![npm](https://img.shields.io/npm/v/@zhiweixu/excel-mcp-server)](https://www.npmjs.com/package/@zhiweixu/excel-mcp-server)
+[![smithery badge](https://smithery.ai/badge/@zhiweixu/excel-mcp-server)](https://smithery.ai/server/@zhiweixu/excel-mcp-server)
 [简体中文](./README_CN.md) | English
 
 Excel file processing server based on Model Context Protocol (MCP), providing functionalities for reading, writing, and analyzing Excel files.
@@ -35,6 +36,15 @@ Excel file processing server based on Model Context Protocol (MCP), providing fu
 
 ## Installation
 
+### Installing via Smithery
+
+To install excel-mcp-server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@zhiweixu/excel-mcp-server):
+
+```bash
+npx -y @smithery/cli install @zhiweixu/excel-mcp-server --client claude
+```
+
+### Installing Manually
 Installing via NPM
 excel-mcp-server can be automatically installed by adding the following configuration to the MCP servers configuration.
 
