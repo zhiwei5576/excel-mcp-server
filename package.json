@@ -1,10 +1,10 @@
 {
   "name": "@zhiweixu/excel-mcp-server",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "index.js",
   "bin": {
-    "excel-mcp-server": "./dist/index.js" 
+    "excel-mcp-server": "./dist/index.js"
   },
   "repository": {
     "type": "git",
