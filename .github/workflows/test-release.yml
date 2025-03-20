@@ -1,0 +1,31 @@
+name: Test Release
+
+on:
+  workflow_dispatch:  # 仅支持手动触发
+
+jobs:
+  test-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build
+        run: npm run build
+        
+      - name: Create Test Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/**/*.js
+          draft: true        # 设置为草稿模式
+          prerelease: true   # 标记为预发布
+          tag_name: test-v0.0.1  # 指定测试用的标签名
+        env:
+          token: ${{ secrets.EXCEL_TOKEN }}
