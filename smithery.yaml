@@ -1,0 +1,23 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required: []
+    properties:
+      logPath:
+        type: string
+        description: Absolute path for log storage. Optional. If not provided, logs will
+          be stored in the './logs' folder.
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'npm',
+      args: ['start'],
+      env: config.logPath ? { LOG_PATH: config.logPath } : {}
+    })
+  exampleConfig:
+    logPath: /var/log/excel-mcp-server
