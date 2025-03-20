@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
+import { getLogPath } from './config.js';
 
 export class LogCleaner {
     private logDir: string;
     private retentionDays: number;
-    private interval: NodeJS.Timeout | null = null;  // 修改这里的类型声明
+    private interval: NodeJS.Timeout | null = null;
 
-    constructor(logDir: string, retentionDays: number = 7) {
-        this.logDir = logDir;
+    constructor(retentionDays: number = 7) {
+        this.logDir = getLogPath();
         this.retentionDays = retentionDays;
     }
 

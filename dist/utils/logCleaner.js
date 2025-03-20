@@ -1,9 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import { getLogPath } from './config.js';
 export class LogCleaner {
-    constructor(logDir, retentionDays = 7) {
-        this.interval = null; // 修改这里的类型声明
-        this.logDir = logDir;
+    constructor(retentionDays = 7) {
+        this.interval = null;
+        this.logDir = getLogPath();
         this.retentionDays = retentionDays;
     }
     start(intervalHours = 24) {

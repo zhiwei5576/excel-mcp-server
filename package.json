@@ -3,10 +3,16 @@
   "version": "0.0.3",
   "type": "module",
   "main": "index.js",
+  "bin": {
+    "excel-mcp-server": "./dist/index.js" 
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/zhiwei5576/excel-mcp-server.git"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",

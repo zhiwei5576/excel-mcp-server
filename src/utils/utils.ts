@@ -1,6 +1,7 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
+import { getLogPath } from './config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,12 +21,11 @@ function formatDate(date: Date): string {
 
 export async function logToFile(message: string) {
     try {
-        const logDir = path.join(__dirname, '../logs');
+        const logDir = getLogPath();
         const date = new Date();
         const fileName = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}.log`;
         const logPath = path.join(logDir, fileName);
 
-        await fs.mkdir(logDir, { recursive: true });
         await fs.appendFile(logPath, `${formatDate(date)} - ${message}\n`);
     } catch (error) {
         console.error('log to file failure:', error);

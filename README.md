@@ -1,5 +1,5 @@
 # Excel MCP Server
-
+[![npm](https://img.shields.io/npm/v/@zhiweixu/excel-mcp-server)](https://www.npmjs.com/package/@zhiweixu/excel-mcp-server)
 [English](./readme_en.md) | 简体中文
 
 基于模型上下文协议（MCP）的 Excel 文件处理服务器，提供 Excel 文件的读写、分析等功能。
