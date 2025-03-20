@@ -7,7 +7,8 @@ jobs:
   test-release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write      # 明确声明需要的权限
+      contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v3
       
@@ -25,9 +26,8 @@ jobs:
       - name: Create Test Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            dist/*.js
-            dist/**/*.js
+          # 只包含源代码压缩包，不包含单独的 JS 文件
+          generate_release_notes: true
           draft: true
           prerelease: true
           tag_name: v0.0.3
