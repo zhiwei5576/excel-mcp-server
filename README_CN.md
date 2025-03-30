@@ -1,7 +1,7 @@
 # Excel MCP Server
 
-[![npm](https://img.shields.io/npm/v/@zhiweixu/excel-mcp-server)](https://www.npmjs.com/package/@zhiweixu/excel-mcp-server)
-[![smithery badge](https://smithery.ai/badge/@zhiweixu/excel-mcp-server)](https://smithery.ai/server/@zhiweixu/excel-mcp-server)
+[![npm](https://img.shields.io/npm/v/@zhiwei5576/excel-mcp-server)](https://www.npmjs.com/package/@zhiweixu/excel-mcp-server)
+[![smithery badge](https://smithery.ai/badge/@zhiwei5576/excel-mcp-server)](https://smithery.ai/server/@zhiweixu/excel-mcp-server)
 [English](./readme.md) | 简体中文
 
 基于模型上下文协议（MCP）的 Excel 文件处理服务器，提供 Excel 文件的读写、分析等功能。
@@ -39,10 +39,10 @@
 
 ### 通过 Smithery 安装
 
-通过 [Smithery](https://smithery.ai/server/@zhiweixu/excel-mcp-server) 自动安装 excel-mcp-server 到 Claude Desktop：
+通过 [Smithery](https://smithery.ai/server/@zhiwei5576/excel-mcp-server) 自动安装 excel-mcp-server 到 Claude Desktop：
 
 ```bash
-npx -y @smithery/cli install @zhiweixu/excel-mcp-server --client claude
+npx -y @smithery/cli install @zhiwei5576/excel-mcp-server --client claude
 ```
 ### 本地安装
 通过 NPM 安装
