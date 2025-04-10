@@ -1,5 +1,17 @@
 import * as XLSX from 'xlsx';
 
+export interface Config {
+    logPath: string;
+    cache: {
+        maxAge: number;        // 缓存过期时间（小时）
+        cleanupInterval: number; // 清理间隔（小时）
+    };
+    log: {
+        retentionDays: number;    // 日志保留天数
+        cleanupInterval: number;   // 清理间隔（小时）
+    };
+}
+
 export interface ReadSheetNamesResult {
     success: boolean;
     data: {

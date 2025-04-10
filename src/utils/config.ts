@@ -1,18 +1,8 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
+import type { Config } from '../types/index.js';
 
-interface Config {
-    logPath: string;
-    cache: {
-        maxAge: number;        // 缓存过期时间（小时）
-        cleanupInterval: number; // 清理间隔（小时）
-    };
-    log: {
-        retentionDays: number;    // 日志保留天数
-        cleanupInterval: number;   // 清理间隔（小时）
-    };
-}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
