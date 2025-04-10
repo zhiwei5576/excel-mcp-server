@@ -6,6 +6,14 @@ const __dirname = path.dirname(__filename);
 export function getConfig() {
     return {
         logPath: process.env.LOG_PATH || '',
+        cache: {
+            maxAge: Number(process.env.CACHE_MAX_AGE) || 1, // 默认1小时
+            cleanupInterval: Number(process.env.CACHE_CLEANUP_INTERVAL) || 4, // 默认4小时
+        },
+        log: {
+            retentionDays: Number(process.env.LOG_RETENTION_DAYS) || 7, // 默认7天
+            cleanupInterval: Number(process.env.LOG_CLEANUP_INTERVAL) || 24 // 默认24小时
+        }
     };
 }
 export function getLogPath() {

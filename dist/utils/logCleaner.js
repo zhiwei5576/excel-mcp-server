@@ -1,19 +1,21 @@
 import fs from 'fs';
 import path from 'path';
-import { getLogPath } from './config.js';
+import { getLogPath, getConfig } from './config.js';
 export class LogCleaner {
-    constructor(retentionDays = 7) {
+    constructor() {
         this.interval = null;
+        const config = getConfig();
         this.logDir = getLogPath();
-        this.retentionDays = retentionDays;
+        this.retentionDays = config.log.retentionDays;
     }
-    start(intervalHours = 24) {
+    start() {
+        const config = getConfig();
         // 立即执行一次清理
         this.cleanOldLogs();
         // 设置定时任务
         this.interval = setInterval(() => {
             this.cleanOldLogs();
-        }, intervalHours * 60 * 60 * 1000);
+        }, config.log.cleanupInterval * 60 * 60 * 1000);
     }
     stop() {
         if (this.interval) {

@@ -57,7 +57,11 @@ Windows Platform:
         "command": "cmd",
         "args": ["/c", "npx", "--yes", "@zhiweixu/excel-mcp-server"],
         "env": {
-            "LOG_PATH": "[set an accessible absolute path]"
+            "LOG_PATH": "[set an accessible absolute path]",
+            "CACHE_MAX_AGE": "1",
+            "CACHE_CLEANUP_INTERVAL": "4",
+            "LOG_RETENTION_DAYS": "7",
+            "LOG_CLEANUP_INTERVAL": "24"
         }
     }
 }

@@ -1,6 +1,6 @@
 import { LogCleaner } from "../utils/logCleaner.js";
 export function initializeLogger() {
-    const logCleaner = new LogCleaner(7);
-    logCleaner.start(24);
+    const logCleaner = new LogCleaner();
+    logCleaner.start();
     return logCleaner;
 }
