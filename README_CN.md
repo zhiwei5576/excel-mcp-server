@@ -57,7 +57,11 @@ Windows 平台:
         "command": "cmd",
         "args": ["/c", "npx", "--yes", "@zhiweixu/excel-mcp-server"],
         "env": {
-            "LOG_PATH": “[设置可访问的绝对路径]”
+            "LOG_PATH": "[设置可访问的绝对路径]",
+            "CACHE_MAX_AGE": "1",
+            "CACHE_CLEANUP_INTERVAL": "4",
+            "LOG_RETENTION_DAYS": "7",
+            "LOG_CLEANUP_INTERVAL": "24"
         }
     }
 }
@@ -72,12 +76,16 @@ Windows 平台:
         "command": "npx",
         "args": ["--yes", "@zhiweixu/excel-mcp-server"],
         "env": {
-            "LOG_PATH": “[设置可访问的绝对路径]”
+            "LOG_PATH": "[设置可访问的绝对路径]",
+            "CACHE_MAX_AGE": "1",
+            "CACHE_CLEANUP_INTERVAL": "4",
+            "LOG_RETENTION_DAYS": "7",
+            "LOG_CLEANUP_INTERVAL": "24"
         }
     }
 }
 ```
-注意：LOG_PATH可以不设置，默认在应用程序根目录下的logs文件夹下
+注意：LOG_PATH可以不设置，默认在应用程序根目录下的logs文件夹下，其它参数可以不设置，默认值见配置说明。
 
 ## API 工具
 
@@ -149,13 +157,35 @@ Windows 平台:
 
 ## 配置说明
 
-- 缓存配置
+### 环境变量配置
 
+- `LOG_PATH`: 日志文件存储路径
+  - 可选配置
+  - 默认值：应用程序根目录下的 logs 文件夹
+
+- `CACHE_MAX_AGE`: 缓存过期时间（小时）
+  - 可选配置
+  - 默认值：1
+
+- `CACHE_CLEANUP_INTERVAL`: 缓存清理间隔（小时）
+  - 可选配置
+  - 默认值：4
+
+- `LOG_RETENTION_DAYS`: 日志保留天数
+  - 可选配置
+  - 默认值：7
+
+- `LOG_CLEANUP_INTERVAL`: 日志清理间隔（小时）
+  - 可选配置
+  - 默认值：24
+
+### 默认配置
+
+- 缓存配置
   - 缓存过期时间：1 小时
   - 缓存清理间隔：4 小时
 
 - 日志配置
-
   - 日志保留天数：7 天
   - 清理间隔：24 小时
 

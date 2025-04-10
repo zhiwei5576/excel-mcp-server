@@ -72,12 +72,16 @@ Other Platforms:
         "command": "npx",
         "args": ["--yes", "@zhiweixu/excel-mcp-server"],
         "env": {
-            "LOG_PATH": "[set an accessible absolute path]"
+            "LOG_PATH": "[set an accessible absolute path]",
+            "CACHE_MAX_AGE": "1",
+            "CACHE_CLEANUP_INTERVAL": "4",
+            "LOG_RETENTION_DAYS": "7",
+            "LOG_CLEANUP_INTERVAL": "24"
         }
     }
 }
 ```
-Note: LOG_PATH is optional. If not set, logs will be stored in the 'logs' folder under the application root directory.
+Note: LOG_PATH is optional. If not set, logs will be stored in the 'logs' folder under the application root directory.other arguments are optional.
 
 ## API Tools
 
@@ -142,13 +146,35 @@ Note: LOG_PATH is optional. If not set, logs will be stored in the 'logs' folder
 
 ## Configuration
 
-- Cache Configuration
+### Environment Variables
 
+- `LOG_PATH`: Log files storage path
+  - Optional
+  - Default: 'logs' folder under application root directory
+
+- `CACHE_MAX_AGE`: Cache expiration time (hours)
+  - Optional
+  - Default: 1
+
+- `CACHE_CLEANUP_INTERVAL`: Cache cleanup interval (hours)
+  - Optional
+  - Default: 4
+
+- `LOG_RETENTION_DAYS`: Log retention days
+  - Optional
+  - Default: 7
+
+- `LOG_CLEANUP_INTERVAL`: Log cleanup interval (hours)
+  - Optional
+  - Default: 24
+
+### Default Configuration
+
+- Cache Configuration
   - Cache expiration time: 1 hour
   - Cache cleanup interval: 4 hours
 
 - Log Configuration
-
   - Log retention days: 7 days
   - Cleanup interval: 24 hours
 

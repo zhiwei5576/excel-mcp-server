@@ -15,8 +15,9 @@ class WorkbookCache {
 
   constructor() {
     const config = getConfig();
-    this.maxAge = config.cache.maxAge;
-    this.cleanupInterval = config.cache.cleanupInterval;
+    // 将小时转换为毫秒
+    this.maxAge = config.cache.maxAge * 60 * 60 * 1000;
+    this.cleanupInterval = config.cache.cleanupInterval * 60 * 60 * 1000;
 
     // 创建定时器，定期清理过期缓存
     setInterval(() => {
