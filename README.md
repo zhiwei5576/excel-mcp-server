@@ -1,6 +1,6 @@
 # Excel MCP Server
 [![npm](https://img.shields.io/npm/v/@zhiweixu/excel-mcp-server)](https://www.npmjs.com/package/@zhiweixu/excel-mcp-server)
-[![smithery badge](https://smithery.ai/badge/@zhiwei5576/excel-mcp-server)](https://smithery.ai/server/@zhiweixu/excel-mcp-server)
+[![smithery badge](https://smithery.ai/badge/@zhiwei5576/excel-mcp-server)](https://smithery.ai/server/@zhiwei5576/excel-mcp-server)
 [简体中文](./README_CN.md) | English
 
 Excel file processing server based on Model Context Protocol (MCP), providing functionalities for reading, writing, and analyzing Excel files.
